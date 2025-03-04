@@ -10,14 +10,27 @@
                     </div>
                     <div>
                         <x-input-label for="email" value="Email"/>
-                        <span class="block mt-1 w-full">{{$alumno->email}}
+                        <span class="block mt-1 w-full">{{$alumno->email}}</span>
                     </div>
                     <div>
                         <x-input-label for="edad" value="Edad"/>
-                        <span class="block mt-1 w-full">{{$alumno->edad}}
+                        <span class="block mt-1 w-full">{{$alumno->edad}}</span>
+                    </div>
+                    
+                    <!-- Nueva sección para mostrar el Proyecto -->
+                    <div>
+                        <x-input-label for="proyecto" value="Proyecto"/>
+                        <span class="block mt-1 w-full">
+                            @if($alumno->proyecto)
+                                {{ $alumno->proyecto->titulo }}
+                            @else
+                                <span class="text-gray-600">No asignado</span>
+                            @endif
+                        </span>
                     </div>
 
                 </div> {{--end div datos alumno--}}
+                
                 <div>
                     <table class="table">
                         <thead>
@@ -34,18 +47,14 @@
                                 <td>{{$idioma->nivel}}</td>
                                 <td>{{$idioma->titulo}}</td>
                             </tr>
-
                         @endforeach
                         </tbody>
-
                     </table>
-
                 </div>
             </div>
-            <div class="flex flex-row justify-between p-3">
-                <button class="btn btn-warning" type="submit">Guardar</button>
-                <button class="btn btn-warning" type="submit">Cancelar</button>
 
+            <div class="flex flex-row justify-between p-3">
+                <a href="{{ route('alumnos.index') }}" class="btn btn-primary">Volver</a>
             </div>
 
         </div>

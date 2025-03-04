@@ -20,6 +20,19 @@
                         <x-input-label for="edad" value="Edad" />
                         <x-text-input id="edad" class="block mt-1 w-full" type="number" name="edad" value="{{$alumno->edad}}"  />
                     </div>
+                    <div class="form-group">
+                        <label for="proyecto_id">Proyecto</label>
+                        <select name="proyecto_id" id="proyecto_id" class="form-control">
+                            <option value="">Sin proyecto</option>
+                            @foreach($proyectos as $proyecto)
+                                <option value="{{ $proyecto->id }}" 
+                                    {{ $alumno->proyecto_id == $proyecto->id ? 'selected' : '' }}>
+                                    {{ $proyecto->titulo }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="flex flex-row justify-between p-3">
                         <button class="btn btn-warning" type="submit">Guardar</button>
                         <button class="btn btn-warning" type="submit">Cancelar</button>
